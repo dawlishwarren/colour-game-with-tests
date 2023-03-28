@@ -15,7 +15,10 @@ const hexMockFn = jest.fn(() => {
 		"3",
 		"4",
 		"5",
+		"6",
 		"7",
+		"8",
+		"9",
 	];
 	return new Array(6)
 		.fill("")
@@ -30,21 +33,9 @@ test("Function has been called", () => {
 
 test("Function return array is strictly 6 digits long", () => {
 	expect(hexMockFn.mock.results[0].value).toHaveLength(6);
+	expect(hexMockFn.mock.results[0].value).not.toHaveLength(5);
 });
 
 test("Each item in the return array strictly contains only numbers 0-6 or letters A-F", () => {
-	// ForEach Iteration
-	function forEach(items, callback) {
-		for (let i = 0; i < items.length; i++) {
-			callback(items[i]);
-		}
-	}
-
-	const regExp = new RegExp("[A-F]|[0-6]", "i");
-
-	mockCallback = jest.fn((item) => regExp.test(item));
-
-	forEach([hexMockFn.mock.results[0].value], mockCallback);
-	expect(mockCallback.mock.calls).toHaveLength(1);
-	expect(mockCallback.mock.calls[0].value).toEqual(true);
+	expect(hexMockFn.mock.results[0].value.join("")).toMatch(/^[a-fA-F0-9]+$/gim);
 });

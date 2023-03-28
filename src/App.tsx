@@ -19,10 +19,10 @@ function App() {
 			"4",
 			"5",
 			"6",
+			"7",
+			"8",
+			"9",
 		];
-		let joined = values.join("");
-		let regExp = new RegExp(joined);
-
 		return (
 			new Array(6)
 				.fill("")
