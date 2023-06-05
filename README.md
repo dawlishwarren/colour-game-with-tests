@@ -1,6 +1,7 @@
 # Guess The Color
 ## Description
 Presented with 3 randomly generated HEX codes, you have to use your colour knowledge to guess the right one!
+View the app at https://dawlishwarren.github.io/colour-game-with-tests/
 
 ## Run this Project Locally
 Clone this project by writing
