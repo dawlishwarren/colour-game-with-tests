@@ -1,6 +1,6 @@
-import "./App.css";
-import { useEffect, useState } from "react";
-import { generateHex } from "./functions/generateHex";
+import './App.css';
+import { useEffect, useState } from 'react';
+import { generateHex } from './functions/generateHex';
 
 function App() {
 	// App generates 6 digit HEX codes, 3 times, saved into State
@@ -21,8 +21,8 @@ function App() {
 	}
 	const [state, setState] = useState<AppState>({
 		colors: [],
-		correctColor: "",
-		message: "Click any button to guess",
+		correctColor: '',
+		message: 'Click any button to guess',
 	});
 	const { colors, correctColor, message } = state;
 
@@ -40,8 +40,8 @@ function App() {
 	// Function creates 3 random colors using generateHex()
 	function createColors() {
 		const colorsArray = new Array(3) // An array of 3 values...
-			.fill("")
-			.map(() => generateHex().join("").toString()); // ...That are the hex code, parsed as a string
+			.fill('')
+			.map(() => generateHex().join('').toString()); // ...That are the hex code, parsed as a string
 
 		// Select a 'correct' color at random
 		const correct = colorsArray[Math.floor(Math.random() * colorsArray.length)];
@@ -54,9 +54,9 @@ function App() {
 		e.preventDefault();
 		const data = (e.target as HTMLButtonElement).value;
 		if (data !== correctColor) {
-			setState({ ...state, message: "Incorrect, guess again!" });
+			setState({ ...state, message: 'Incorrect, guess again!' });
 		} else if (data === correctColor) {
-			setState({ ...state, message: "Correct!" });
+			setState({ ...state, message: 'Correct!' });
 			handleCorrect();
 		}
 	}
@@ -69,25 +69,25 @@ function App() {
 				...state,
 				colors: newColors.colorsArray,
 				correctColor: newColors.correct,
-				message: "Click any button to guess",
+				message: 'Click any button to guess',
 			});
 		}, 1000);
 	}
 
 	return (
-		<div className="App">
+		<div className='App'>
 			<div>
 				<h1>Guess the colour!</h1>
 				<div
 					style={{ backgroundColor: `#${correctColor}` }}
-					className="colorBox"
+					className='colorBox'
 				/>
 				{colors.map((color, i) => (
 					<button value={color} key={i} onClick={handleClick}>
 						#{color}
 					</button>
 				))}
-				<h3 className="message">{message}</h3>
+				<h3 className='message'>{message}</h3>
 			</div>
 		</div>
 	);
